@@ -1,0 +1,130 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "super-trader-ai"
+version = "1.0.0"
+description = "Hybrid Math/RL AI for automated trading"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Super Trader AI Team"},
+]
+keywords = ["trading", "reinforcement-learning", "ai", "streamlit", "polygon-io"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "streamlit==1.51.0",
+    "stable-baselines3==2.7.0",
+    "shimmy==2.0.0",
+    "pandas==2.3.3",
+    "numpy==2.3.5",
+    "gymnasium==1.2.2",
+    "requests==2.32.5",
+    "altair==5.5.0",
+    "attrs==25.4.0",
+    "blinker==1.9.0",
+    "cachetools==6.2.2",
+    "certifi==2025.11.12",
+    "charset-normalizer==3.4.4",
+    "click==8.3.1",
+    "cloudpickle==3.1.2",
+    "colorama==0.4.6",
+    "contourpy==1.3.3",
+    "cycler==0.12.1",
+    "farama-notifications==0.0.4",
+    "filelock==3.20.0",
+    "fonttools==4.60.1",
+    "fsspec==2025.10.0",
+    "gitdb==4.0.12",
+    "gitpython==3.1.45",
+    "idna==3.11",
+    "jinja2==3.1.6",
+    "jsonschema==4.25.1",
+    "jsonschema-specifications==2025.9.1",
+    "kiwisolver==1.4.9",
+    "markupsafe==3.0.3",
+    "matplotlib==3.10.7",
+    "mpmath==1.3.0",
+    "narwhals==2.12.0",
+    "networkx==3.6",
+    "packaging==25.0",
+    "pillow==12.0.0",
+    "protobuf==6.33.1",
+    "pyarrow==21.0.0",
+    "pydeck==0.9.1",
+    "pyparsing==3.2.5",
+    "python-dateutil==2.9.0.post0",
+    "pytz==2025.2",
+    "referencing==0.37.0",
+    "rpds-py==0.29.0",
+    "setuptools==80.9.0",
+    "six==1.17.0",
+    "smmap==5.0.2",
+    "sympy==1.14.0",
+    "tenacity==9.1.2",
+    "toml==0.10.2",
+    "torch==2.9.1",
+    "tornado==6.5.2",
+    "typing-extensions==4.15.0",
+    "tzdata==2025.2",
+    "urllib3==2.5.0",
+    "watchdog==6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/super-trader-ai"
+"Bug Reports" = "https://github.com/yourusername/super-trader-ai/issues"
+"Source" = "https://github.com/yourusername/super-trader-ai"
+
+[project.scripts]
+super-trader = "app:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["super_trader*", "config*", "utils*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=super_trader",
+    "--cov-report=html",
+    "--cov-report=term-missing:skip-covered",
+]
