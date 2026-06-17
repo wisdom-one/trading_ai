@@ -8,23 +8,15 @@ from typing import Optional
 
 def load_api_key_from_env(filepath: str = ".env_data") -> str:
     """
-    Load API key from environment variables or .env_data file.
-    Prioritizes system environment variables for production compatibility.
+    Securely load API key from .env_data file.
+    Security: Strips whitespace and invisible characters.
 
     Args:
-        filepath: Path to the local environment file (fallback)
+        filepath: Path to the environment file
 
     Returns:
         Cleaned API key or empty string if not found
     """
-    # 1. Try system environment variable first (Production/CI/CD)
-    api_key = os.getenv("POLYGON_API_KEY")
-    if api_key:
-        # Security: Remove all non-printable characters and quotes
-        cleaned = "".join(c for c in api_key if c.isprintable())
-        return cleaned.strip().strip('"').strip("'")
-
-    # 2. Fallback to local file (Development)
     if not os.path.exists(filepath):
         return ""
 
